@@ -28,6 +28,7 @@ public class Server {
 
     public void send() throws IOException {
         String[] parts = in.readLine().split(" "); //lettura messaggio da client e split
+        double res;
 
         v1 = Integer.parseInt(parts[0]);
         v2 = Integer.parseInt(parts[1]);
@@ -45,7 +46,8 @@ public class Server {
                 out.writeBytes(String.valueOf(v1 * v2) + "\n");
                 break;
             case "/":
-                out.writeBytes(String.valueOf(v1 / v2) + "\n");
+                res = (double) v1 / v2;
+                out.writeBytes(String.valueOf(res) + "\n");
                 break;
             default:
                 out.writeBytes("Operatore non valido");
